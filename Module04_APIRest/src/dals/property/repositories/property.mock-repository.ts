@@ -3,13 +3,14 @@ import { ListingAndReview, PropertyReview } from '../property.model';
 import { db } from '../../mock-data';
 
 export const mockRepository: PropertyRepository = {
-  getPropertyList: async () => db.properties,
-  getProperty: async (_id: string) => db.properties.find((b) => b._id === _id),
+  getPropertyList: async (uppercasedCountry: string) => 
+    uppercasedCountry ? db.properties.filter((property) => property.address.country.toUpperCase() === uppercasedCountry) : db.properties,
+  getProperty: async (_id: string) => db.properties.find((property) => property._id === _id),
   saveReview: async (review: PropertyReview) => await insertReview(review),
   saveProperty: async (property: ListingAndReview) =>
     Boolean(property._id) ? updateProperty(property) : insertProperty(property),
   deleteProperty: async (_id: string) => {
-    db.properties = db.properties.filter((b) => b._id !== _id);
+    db.properties = db.properties.filter((property) => property._id !== _id);
     return true;
   },
 };

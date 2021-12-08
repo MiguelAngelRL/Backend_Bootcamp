@@ -12,7 +12,8 @@ export const propertyApi = Router();
 propertyApi
   .get('/', async (req, res, next) => { // Getting properties list
     try {
-      const propertyList = await propertyRepository.getPropertyList();
+      const uppercasedCountry: string = req.query.country?.toString().toUpperCase();
+      const propertyList = await propertyRepository.getPropertyList(uppercasedCountry);
       res.send(mapPropertyListFromModelToApi(propertyList));
     } catch (error) {
       next(error);

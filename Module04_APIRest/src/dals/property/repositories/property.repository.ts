@@ -1,7 +1,7 @@
 import { ListingAndReview, PropertyReview } from '../property.model';
 
 export interface PropertyRepository {
-  getPropertyList: () => Promise<ListingAndReview[]>;
+  getPropertyList: (country: string) => Promise<ListingAndReview[]>;
   getProperty: (id: string) => Promise<ListingAndReview>;
   saveReview: (review: PropertyReview) => Promise<ListingAndReview>;
   saveProperty: (property: ListingAndReview) => Promise<ListingAndReview>;
