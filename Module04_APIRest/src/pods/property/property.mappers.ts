@@ -1,6 +1,6 @@
 import * as model from 'dals';
-import { PropertyReview } from 'dals';
 import * as apiModel from './property.api-model';
+import { sortReviewsByRecentDate } from '../../common-app/utils'
 
 export const mapPropertyFromModelToApi = (property: model.ListingAndReview): apiModel.PropertySummary => ({
   _id: property._id,
@@ -41,7 +41,7 @@ export const mapPropertyDetailsFromModelToApi = (propertyDetails: model.ListingA
 });
 
 const mapPropertyReviewListFromModelToApi = (propertyReviewList: model.PropertyReview[]): apiModel.PropertyReview[] => {
-  const sortedArray = propertyReviewList.sort(sortReviewsByDate);
+  const sortedArray = propertyReviewList.sort(sortReviewsByRecentDate);
   const slicedArray = sortedArray.slice(0, 5);
   return slicedArray.map(mapPropertyReviewFromModelToApi);
 }
@@ -49,7 +49,7 @@ const mapPropertyReviewListFromModelToApi = (propertyReviewList: model.PropertyR
 const mapPropertyReviewFromModelToApi = (propertyReview: model.PropertyReview): apiModel.PropertyReview => ({
   _id: propertyReview._id,
   property_id: propertyReview.listing_id,
-  review_date: propertyReview.date.$date,
+  review_date: propertyReview.date,
   reviewer_id: propertyReview.reviewer_id,
   reviewer_name: propertyReview.reviewer_name,
   review_comment: propertyReview.comments,
@@ -58,14 +58,8 @@ const mapPropertyReviewFromModelToApi = (propertyReview: model.PropertyReview): 
 export const mapPropertyReviewFromApiToModel = (propertyReview: apiModel.PropertyReview): model.PropertyReview => ({
   _id: undefined,
   listing_id: propertyReview.property_id,
-  date: undefined,
+  date: propertyReview.review_date || (new Date()).toISOString(),
   reviewer_id: propertyReview.reviewer_id,
   reviewer_name: propertyReview.reviewer_name,
   comments: propertyReview.review_comment
 });
-
-const sortReviewsByDate = (a: PropertyReview, b: PropertyReview) => {
-  const dateA = (new Date(a.date.$date)).getTime();
-  const dateB = (new Date(b.date.$date)).getTime();
-  return (dateB - dateA);
-}

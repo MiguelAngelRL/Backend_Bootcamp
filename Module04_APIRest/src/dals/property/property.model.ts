@@ -17,10 +17,10 @@ export interface ListingAndReview {
   minimum_nights?: string;
   maximum_nights?: string;
   cancellation_policy?: string;
-  last_scraped?: PropertyDate;
-  calendar_last_scraped?: PropertyDate;
-  first_review?: PropertyDate;
-  last_review?: PropertyDate;
+  last_scraped?: string;
+  calendar_last_scraped?: string;
+  first_review?: string;
+  last_review?: string;
   accommodates?: number;
   bedrooms: number;
   beds: number;
@@ -84,10 +84,6 @@ interface PropertyLocation {
   is_location_exact: boolean;
 }
 
-interface PropertyDate {
-  $date: string;
-}
-
 interface PropertyDecimalNumber {
   $numberDecimal: string;
 }
@@ -111,7 +107,7 @@ interface PropertyReviewScores {
 
 export interface PropertyReview {
   _id: string;
-  date: PropertyDate;
+  date: string;
   listing_id: string;
   reviewer_id: string;
   reviewer_name: string;

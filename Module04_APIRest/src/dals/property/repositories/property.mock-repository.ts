@@ -34,7 +34,7 @@ const updateProperty = (property: ListingAndReview) => {
 const insertReview = async (newReview: PropertyReview): Promise<ListingAndReview> => {
   const property = await mockRepository.getProperty(newReview?.listing_id);
   const reviewsList = property?.reviews || [] as PropertyReview[];
-  reviewsList.push({ ...newReview, _id: getIdFromArrayLength(reviewsList), date: { $date: getDateAsString()} });
+  reviewsList.push({ ...newReview, _id: getIdFromArrayLength(reviewsList), date: getDateAsString() });
   property.reviews = reviewsList;
   return await updateProperty(property);
 }

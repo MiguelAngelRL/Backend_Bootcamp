@@ -25,18 +25,10 @@ export const db: DB = {
     "minimum_nights": "2",
     "maximum_nights": "30",
     "cancellation_policy": "moderate",
-    "last_scraped": {
-      "$date": "2019-02-16T05:00:00.000Z"
-    },
-    "calendar_last_scraped": {
-      "$date": "2019-02-16T05:00:00.000Z"
-    },
-    "first_review": {
-      "$date": "2016-01-03T05:00:00.000Z"
-    },
-    "last_review": {
-      "$date": "2019-01-20T05:00:00.000Z"
-    },
+    "last_scraped": "2019-02-16T05:00:00.000Z",
+    "calendar_last_scraped": "2019-02-16T05:00:00.000Z",
+    "first_review": "2016-01-03T05:00:00.000Z",
+    "last_review": "2019-01-20T05:00:00.000Z",
     "accommodates": 8,
     "bedrooms": 3,
     "beds": 5,
@@ -158,9 +150,7 @@ export const db: DB = {
     "reviews": [
       {
         "_id": "58663741",
-        "date": {
-          "$date": "2016-01-03T05:00:00.000Z"
-        },
+        "date": "2016-01-03T05:00:00.000Z",
         "listing_id": "10006546",
         "reviewer_id": "51483096",
         "reviewer_name": "Cátia",
@@ -168,9 +158,7 @@ export const db: DB = {
       },
       {
         "_id": "62413197",
-        "date": {
-          "$date": "2016-02-14T05:00:00.000Z"
-        },
+        "date": "2016-02-14T05:00:00.000Z",
         "listing_id": "10006546",
         "reviewer_id": "40031996",
         "reviewer_name": "Théo",
@@ -178,9 +166,7 @@ export const db: DB = {
       },
       {
         "_id": "68310569",
-        "date": {
-          "$date": "2016-04-04T04:00:00.000Z"
-        },
+        "date": "2016-04-04T04:00:00.000Z",
         "listing_id": "10006546",
         "reviewer_id": "53859850",
         "reviewer_name": "Bart",
@@ -188,9 +174,7 @@ export const db: DB = {
       },
       {
         "_id": "69693942",
-        "date": {
-          "$date": "2016-04-12T04:00:00.000Z"
-        },
+        "date": "2016-04-12T04:00:00.000Z",
         "listing_id": "10006546",
         "reviewer_id": "3135623",
         "reviewer_name": "Alex",
@@ -198,9 +182,7 @@ export const db: DB = {
       },
       {
         "_id": "71451096",
-        "date": {
-          "$date": "2016-04-25T04:00:00.000Z"
-        },
+        "date": "2016-04-25T04:00:00.000Z",
         "listing_id": "10006546",
         "reviewer_id": "13187858",
         "reviewer_name": "Dan",
@@ -208,9 +190,7 @@ export const db: DB = {
       },
       {
         "_id": "73191268",
-        "date": {
-          "$date": "2016-05-07T04:00:00.000Z"
-        },
+        "date": "2016-05-07T04:00:00.000Z",
         "listing_id": "10006546",
         "reviewer_id": "61434690",
         "reviewer_name": "Anne",
@@ -218,9 +198,7 @@ export const db: DB = {
       },
       {
         "_id": "77438107",
-        "date": {
-          "$date": "2016-05-31T04:00:00.000Z"
-        },
+        "date": "2016-05-31T04:00:00.000Z",
         "listing_id": "10006546",
         "reviewer_id": "3673216",
         "reviewer_name": "Chris",
@@ -228,9 +206,7 @@ export const db: DB = {
       },
       {
         "_id": "89637734",
-        "date": {
-          "$date": "2016-07-29T04:00:00.000Z"
-        },
+        "date": "2016-07-29T04:00:00.000Z",
         "listing_id": "10006546",
         "reviewer_id": "9172374",
         "reviewer_name": "Leslie",
@@ -257,12 +233,8 @@ export const db: DB = {
     "minimum_nights": "2",
     "maximum_nights": "1125",
     "cancellation_policy": "flexible",
-    "last_scraped": {
-      "$date": "2019-02-11T05:00:00.000Z"
-    },
-    "calendar_last_scraped": {
-      "$date": "2019-02-11T05:00:00.000Z"
-    },
+    "last_scraped": "2019-02-11T05:00:00.000Z",
+    "calendar_last_scraped": "2019-02-11T05:00:00.000Z",
     "accommodates": 4,
     "bedrooms": 1,
     "beds": 2,
@@ -375,18 +347,10 @@ export const db: DB = {
     "minimum_nights": "3",
     "maximum_nights": "365",
     "cancellation_policy": "strict_14_with_grace_period",
-    "last_scraped": {
-      "$date": "2019-03-06T05:00:00.000Z"
-    },
-    "calendar_last_scraped": {
-      "$date": "2019-03-06T05:00:00.000Z"
-    },
-    "first_review": {
-      "$date": "2013-05-24T04:00:00.000Z"
-    },
-    "last_review": {
-      "$date": "2019-02-07T05:00:00.000Z"
-    },
+    "last_scraped": "2019-03-06T05:00:00.000Z",
+    "calendar_last_scraped": "2019-03-06T05:00:00.000Z",
+    "first_review": "2013-05-24T04:00:00.000Z",
+    "last_review": "2019-02-07T05:00:00.000Z",
     "accommodates": 2,
     "bedrooms": 1,
     "beds": 1,
@@ -513,9 +477,7 @@ export const db: DB = {
     "reviews": [
       {
         "_id": "4765259",
-        "date": {
-          "$date": "2013-05-24T04:00:00.000Z"
-        },
+        "date": "2013-05-24T04:00:00.000Z",
         "listing_id": "1001265",
         "reviewer_id": "6435238",
         "reviewer_name": "Jacqui",
@@ -523,9 +485,7 @@ export const db: DB = {
       },
       {
         "_id": "4908312",
-        "date": {
-          "$date": "2013-06-01T04:00:00.000Z"
-        },
+        "date": "2013-06-01T04:00:00.000Z",
         "listing_id": "1001265",
         "reviewer_id": "3454262",
         "reviewer_name": "Khoren",
@@ -533,9 +493,7 @@ export const db: DB = {
       },
       {
         "_id": "7099260",
-        "date": {
-          "$date": "2013-09-06T04:00:00.000Z"
-        },
+        "date": "2013-09-06T04:00:00.000Z",
         "listing_id": "1001265",
         "reviewer_id": "7038567",
         "reviewer_name": "Nick",
@@ -543,9 +501,7 @@ export const db: DB = {
       },
       {
         "_id": "8363944",
-        "date": {
-          "$date": "2013-10-28T04:00:00.000Z"
-        },
+        "date": "2013-10-28T04:00:00.000Z",
         "listing_id": "1001265",
         "reviewer_id": "7096845",
         "reviewer_name": "Jean",
@@ -572,18 +528,10 @@ export const db: DB = {
     "minimum_nights": "14",
     "maximum_nights": "1125",
     "cancellation_policy": "flexible",
-    "last_scraped": {
-      "$date": "2019-03-06T05:00:00.000Z"
-    },
-    "calendar_last_scraped": {
-      "$date": "2019-03-06T05:00:00.000Z"
-    },
-    "first_review": {
-      "$date": "2016-01-31T05:00:00.000Z"
-    },
-    "last_review": {
-      "$date": "2016-01-31T05:00:00.000Z"
-    },
+    "last_scraped": "2019-03-06T05:00:00.000Z",
+    "calendar_last_scraped": "2019-03-06T05:00:00.000Z",
+    "first_review": "2016-01-31T05:00:00.000Z",
+    "last_review": "2016-01-31T05:00:00.000Z",
     "accommodates": 1,
     "bedrooms": 1,
     "beds": 1,
@@ -673,9 +621,7 @@ export const db: DB = {
     "reviews": [
       {
         "_id": "61050713",
-        "date": {
-          "$date": "2016-01-31T05:00:00.000Z"
-        },
+        "date": "2016-01-31T05:00:00.000Z",
         "listing_id": "10021707",
         "reviewer_id": "52006105",
         "reviewer_name": "Antoine",
@@ -702,12 +648,8 @@ export const db: DB = {
     "minimum_nights": "1",
     "maximum_nights": "1125",
     "cancellation_policy": "flexible",
-    "last_scraped": {
-      "$date": "2019-02-11T05:00:00.000Z"
-    },
-    "calendar_last_scraped": {
-      "$date": "2019-02-11T05:00:00.000Z"
-    },
+    "last_scraped": "2019-02-11T05:00:00.000Z",
+    "calendar_last_scraped": "2019-02-11T05:00:00.000Z",
     "accommodates": 2,
     "bedrooms": 1,
     "beds": 1,
@@ -819,18 +761,10 @@ export const db: DB = {
     "minimum_nights": "12",
     "maximum_nights": "360",
     "cancellation_policy": "strict_14_with_grace_period",
-    "last_scraped": {
-      "$date": "2019-03-07T05:00:00.000Z"
-    },
-    "calendar_last_scraped": {
-      "$date": "2019-03-07T05:00:00.000Z"
-    },
-    "first_review": {
-      "$date": "2013-04-29T04:00:00.000Z"
-    },
-    "last_review": {
-      "$date": "2018-08-12T04:00:00.000Z"
-    },
+    "last_scraped": "2019-03-07T05:00:00.000Z",
+    "calendar_last_scraped": "2019-03-07T05:00:00.000Z",
+    "first_review": "2013-04-29T04:00:00.000Z",
+    "last_review": "2018-08-12T04:00:00.000Z",
     "accommodates": 2,
     "bedrooms": 1,
     "beds": 1,
@@ -931,9 +865,7 @@ export const db: DB = {
     "reviews": [
       {
         "_id": "4351675",
-        "date": {
-          "$date": "2013-04-29T04:00:00.000Z"
-        },
+        "date": "2013-04-29T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "3708459",
         "reviewer_name": "Josh",
@@ -941,9 +873,7 @@ export const db: DB = {
       },
       {
         "_id": "4848277",
-        "date": {
-          "$date": "2013-05-28T04:00:00.000Z"
-        },
+        "date": "2013-05-28T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "4609491",
         "reviewer_name": "Ralf",
@@ -951,9 +881,7 @@ export const db: DB = {
       },
       {
         "_id": "5094175",
-        "date": {
-          "$date": "2013-06-11T04:00:00.000Z"
-        },
+        "date": "2013-06-11T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "6741662",
         "reviewer_name": "Mame",
@@ -961,9 +889,7 @@ export const db: DB = {
       },
       {
         "_id": "5497796",
-        "date": {
-          "$date": "2013-07-02T04:00:00.000Z"
-        },
+        "date": "2013-07-02T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "474156",
         "reviewer_name": "Lars",
@@ -971,9 +897,7 @@ export const db: DB = {
       },
       {
         "_id": "6933005",
-        "date": {
-          "$date": "2013-08-31T04:00:00.000Z"
-        },
+        "date": "2013-08-31T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "6067127",
         "reviewer_name": "Nicole",
@@ -981,9 +905,7 @@ export const db: DB = {
       },
       {
         "_id": "7205029",
-        "date": {
-          "$date": "2013-09-10T04:00:00.000Z"
-        },
+        "date": "2013-09-10T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "7743438",
         "reviewer_name": "Ute",
@@ -991,9 +913,7 @@ export const db: DB = {
       },
       {
         "_id": "7464858",
-        "date": {
-          "$date": "2013-09-21T04:00:00.000Z"
-        },
+        "date": "2013-09-21T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "8543724",
         "reviewer_name": "Drew",
@@ -1001,9 +921,7 @@ export const db: DB = {
       },
       {
         "_id": "7515354",
-        "date": {
-          "$date": "2013-09-23T04:00:00.000Z"
-        },
+        "date": "2013-09-23T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "1683177",
         "reviewer_name": "Don",
@@ -1011,9 +929,7 @@ export const db: DB = {
       },
       {
         "_id": "7871931",
-        "date": {
-          "$date": "2013-10-07T04:00:00.000Z"
-        },
+        "date": "2013-10-07T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "2871729",
         "reviewer_name": "Heidi",
@@ -1021,9 +937,7 @@ export const db: DB = {
       },
       {
         "_id": "8136769",
-        "date": {
-          "$date": "2013-10-17T04:00:00.000Z"
-        },
+        "date": "2013-10-17T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "7811780",
         "reviewer_name": "Julia",
@@ -1031,9 +945,7 @@ export const db: DB = {
       },
       {
         "_id": "8210485",
-        "date": {
-          "$date": "2013-10-21T04:00:00.000Z"
-        },
+        "date": "2013-10-21T04:00:00.000Z",
         "listing_id": "1003530",
         "reviewer_id": "8119019",
         "reviewer_name": "Diane",
@@ -1060,18 +972,10 @@ export const db: DB = {
     "minimum_nights": "3",
     "maximum_nights": "75",
     "cancellation_policy": "strict_14_with_grace_period",
-    "last_scraped": {
-      "$date": "2019-02-11T05:00:00.000Z"
-    },
-    "calendar_last_scraped": {
-      "$date": "2019-02-11T05:00:00.000Z"
-    },
-    "first_review": {
-      "$date": "2016-01-18T05:00:00.000Z"
-    },
-    "last_review": {
-      "$date": "2019-01-28T05:00:00.000Z"
-    },
+    "last_scraped": "2019-02-11T05:00:00.000Z",
+    "calendar_last_scraped": "2019-02-11T05:00:00.000Z",
+    "first_review": "2016-01-18T05:00:00.000Z",
+    "last_review": "2019-01-28T05:00:00.000Z",
     "accommodates": 4,
     "bedrooms": 1,
     "beds": 3,
@@ -1191,9 +1095,7 @@ export const db: DB = {
     "reviews": [
       {
         "_id": "60037020",
-        "date": {
-          "$date": "2016-01-18T05:00:00.000Z"
-        },
+        "date": "2016-01-18T05:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "44949795",
         "reviewer_name": "Valim",
@@ -1201,9 +1103,7 @@ export const db: DB = {
       },
       {
         "_id": "62079672",
-        "date": {
-          "$date": "2016-02-11T05:00:00.000Z"
-        },
+        "date": "2016-02-11T05:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "47057044",
         "reviewer_name": "Nabil",
@@ -1211,9 +1111,7 @@ export const db: DB = {
       },
       {
         "_id": "63557342",
-        "date": {
-          "$date": "2016-02-24T05:00:00.000Z"
-        },
+        "date": "2016-02-24T05:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "669357",
         "reviewer_name": "Davi",
@@ -1221,9 +1119,7 @@ export const db: DB = {
       },
       {
         "_id": "68976444",
-        "date": {
-          "$date": "2016-04-08T04:00:00.000Z"
-        },
+        "date": "2016-04-08T04:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "15238005",
         "reviewer_name": "Agustin",
@@ -1231,9 +1127,7 @@ export const db: DB = {
       },
       {
         "_id": "87261130",
-        "date": {
-          "$date": "2016-07-19T04:00:00.000Z"
-        },
+        "date": "2016-07-19T04:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "83235034",
         "reviewer_name": "Raphael",
@@ -1241,9 +1135,7 @@ export const db: DB = {
       },
       {
         "_id": "89793633",
-        "date": {
-          "$date": "2016-07-30T04:00:00.000Z"
-        },
+        "date": "2016-07-30T04:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "12345019",
         "reviewer_name": "Luis",
@@ -1251,9 +1143,7 @@ export const db: DB = {
       },
       {
         "_id": "96447291",
-        "date": {
-          "$date": "2016-08-22T04:00:00.000Z"
-        },
+        "date": "2016-08-22T04:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "46538654",
         "reviewer_name": "Adrian Adolfo",
@@ -1261,9 +1151,7 @@ export const db: DB = {
       },
       {
         "_id": "98707977",
-        "date": {
-          "$date": "2016-09-01T04:00:00.000Z"
-        },
+        "date": "2016-09-01T04:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "20095666",
         "reviewer_name": "Asif",
@@ -1271,9 +1159,7 @@ export const db: DB = {
       },
       {
         "_id": "105153541",
-        "date": {
-          "$date": "2016-09-30T04:00:00.000Z"
-        },
+        "date": "2016-09-30T04:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "81173012",
         "reviewer_name": "Maureen",
@@ -1281,9 +1167,7 @@ export const db: DB = {
       },
       {
         "_id": "106849380",
-        "date": {
-          "$date": "2016-10-08T04:00:00.000Z"
-        },
+        "date": "2016-10-08T04:00:00.000Z",
         "listing_id": "10038496",
         "reviewer_id": "24470430",
         "reviewer_name": "Gracinha Ferreira",

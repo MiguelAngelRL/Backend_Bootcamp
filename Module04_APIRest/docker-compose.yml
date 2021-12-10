@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  airbnb-db:
+    container_name: airbnb-mongo
+    image: mongo:5.0.3
+    ports:
+      - "27017:27017"
+    volumes:
+      - "/var/lib/docker/volumes/volume_airbnb:/data/db"

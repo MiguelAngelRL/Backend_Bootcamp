@@ -6,6 +6,7 @@ import {
   mapPropertyDetailsFromModelToApi,
   mapPropertyReviewFromApiToModel
 } from './property.mappers';
+import { getDBInstance } from 'core/servers';
 
 export const propertyApi = Router();
 
@@ -14,6 +15,7 @@ propertyApi
     try {
       const uppercasedCountry: string = req.query.country?.toString().toUpperCase();
       const propertyList = await propertyRepository.getPropertyList(uppercasedCountry);
+      // console.log("Total properties:: " + propertyList.length)
       res.send(mapPropertyListFromModelToApi(propertyList));
     } catch (error) {
       next(error);
