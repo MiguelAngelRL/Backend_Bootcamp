@@ -6,7 +6,6 @@ import {
   mapPropertyDetailsFromModelToApi,
   mapPropertyReviewFromApiToModel
 } from './property.mappers';
-import { getDBInstance } from 'core/servers';
 
 export const propertyApi = Router();
 
@@ -15,7 +14,6 @@ propertyApi
     try {
       const uppercasedCountry: string = req.query.country?.toString().toUpperCase();
       const propertyList = await propertyRepository.getPropertyList(uppercasedCountry);
-      // console.log("Total properties:: " + propertyList.length)
       res.send(mapPropertyListFromModelToApi(propertyList));
     } catch (error) {
       next(error);
@@ -25,6 +23,7 @@ propertyApi
     try {
       const { id } = req.params;
       const property = await propertyRepository.getProperty(id);
+      const baños = property.bathrooms;
       res.send(mapPropertyDetailsFromModelToApi(property));
     } catch (error) {
       next(error);
@@ -39,9 +38,10 @@ propertyApi
       next(error);
     }
   })
-  .patch('/', async (req, res, next) => {
+  .patch('/:id/addreview', async (req, res, next) => { // Adding new review to property
     try {
-      const modelReview = mapPropertyReviewFromApiToModel(req.body);
+      const propertyId = req.params.id;
+      const modelReview = mapPropertyReviewFromApiToModel(propertyId, req.body);
       const newProperty = await propertyRepository.saveReview(modelReview);
       res.status(201).send(mapPropertyDetailsFromModelToApi(newProperty));          
     } catch (error) {

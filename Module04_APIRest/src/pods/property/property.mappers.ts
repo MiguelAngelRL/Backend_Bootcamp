@@ -1,9 +1,10 @@
 import * as model from 'dals';
 import * as apiModel from './property.api-model';
 import { sortReviewsByRecentDate } from '../../common-app/utils'
+import { ObjectId } from 'mongodb';
 
 export const mapPropertyFromModelToApi = (property: model.ListingAndReview): apiModel.PropertySummary => ({
-  _id: property._id,
+  id: property._id,
   name: property.name,
   picture_url: property.images.picture_url
 });
@@ -12,7 +13,7 @@ export const mapPropertyListFromModelToApi = (propertyList: model.ListingAndRevi
   propertyList.map(mapPropertyFromModelToApi);
 
 export const mapPropertyDetailsFromApiToModel = (propertyDetails: apiModel.PropertyDetails): model.ListingAndReview => ({
-  _id: propertyDetails._id,
+  _id: propertyDetails.id,
   name: propertyDetails.name,
   images: {
     picture_url: propertyDetails.picture_url,
@@ -21,7 +22,7 @@ export const mapPropertyDetailsFromApiToModel = (propertyDetails: apiModel.Prope
     street: propertyDetails.address
   },
   bathrooms: {
-    $numberDecimal: (propertyDetails.bathrooms).toFixed(1)
+    $numberDecimal: propertyDetails.bathrooms?.toFixed(1)
   },
   bedrooms: propertyDetails.bedrooms,
   beds: propertyDetails.beds,
@@ -29,7 +30,7 @@ export const mapPropertyDetailsFromApiToModel = (propertyDetails: apiModel.Prope
 });
 
 export const mapPropertyDetailsFromModelToApi = (propertyDetails: model.ListingAndReview): apiModel.PropertyDetails => ({
-  _id: propertyDetails._id,
+  id: propertyDetails._id,
   name: propertyDetails.name,
   picture_url: propertyDetails.images.picture_url,
   description: propertyDetails.description,
@@ -47,7 +48,7 @@ const mapPropertyReviewListFromModelToApi = (propertyReviewList: model.PropertyR
 }
 
 const mapPropertyReviewFromModelToApi = (propertyReview: model.PropertyReview): apiModel.PropertyReview => ({
-  _id: propertyReview._id,
+  id: propertyReview._id,
   property_id: propertyReview.listing_id,
   review_date: propertyReview.date,
   reviewer_id: propertyReview.reviewer_id,
@@ -55,9 +56,9 @@ const mapPropertyReviewFromModelToApi = (propertyReview: model.PropertyReview): 
   review_comment: propertyReview.comments,
 });
 
-export const mapPropertyReviewFromApiToModel = (propertyReview: apiModel.PropertyReview): model.PropertyReview => ({
-  _id: undefined,
-  listing_id: propertyReview.property_id,
+export const mapPropertyReviewFromApiToModel = (propertyId: string, propertyReview: apiModel.PropertyReview): model.PropertyReview => ({
+  _id: propertyReview.id ? propertyReview.id : (new ObjectId().toString()),
+  listing_id: propertyId,
   date: propertyReview.review_date || (new Date()).toISOString(),
   reviewer_id: propertyReview.reviewer_id,
   reviewer_name: propertyReview.reviewer_name,

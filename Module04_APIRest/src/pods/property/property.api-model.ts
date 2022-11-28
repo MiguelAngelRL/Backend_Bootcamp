@@ -1,5 +1,5 @@
 export interface PropertySummary {
-  _id: string;
+  id: string;
   name: string;
   picture_url: string;
 }
@@ -14,7 +14,7 @@ export interface PropertyDetails extends PropertySummary {
 }
 
 export interface PropertyReview {
-  _id: string;
+  id: string;
   property_id: string;
   review_date: string;
   reviewer_id: string,
