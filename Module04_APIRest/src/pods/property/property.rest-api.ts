@@ -23,8 +23,7 @@ propertyApi
     try {
       const { id } = req.params;
       const property = await propertyRepository.getProperty(id);
-      const baños = property.bathrooms;
-      res.send(mapPropertyDetailsFromModelToApi(property));
+      property ? res.send(mapPropertyDetailsFromModelToApi(property)) : res.send(property);
     } catch (error) {
       next(error);
     }
@@ -42,8 +41,8 @@ propertyApi
     try {
       const propertyId = req.params.id;
       const modelReview = mapPropertyReviewFromApiToModel(propertyId, req.body);
-      const newProperty = await propertyRepository.saveReview(modelReview);
-      res.status(201).send(mapPropertyDetailsFromModelToApi(newProperty));          
+      const updatedProperty = await propertyRepository.saveReview(modelReview);
+      res.status(201).send(mapPropertyDetailsFromModelToApi(updatedProperty));          
     } catch (error) {
       next(error);
     }

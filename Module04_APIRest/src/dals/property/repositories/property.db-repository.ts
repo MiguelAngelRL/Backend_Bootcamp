@@ -1,23 +1,24 @@
 import { PropertyRepository } from './property.repository';
 import { ListingAndReview, PropertyReview } from '../property.model';
 import { getDBInstance } from 'core/servers';
-import { Db } from 'mongodb';
+import { Db, ObjectId } from 'mongodb';
 
+const listingsAndReviewsCollection = 'listingsAndReviews';
 
 export const dbRepository: PropertyRepository = {
 
   getPropertyList: async (uppercasedCountry) => {
     const db = getDBInstance();
     return uppercasedCountry ? 
-            await db.collection<ListingAndReview>('listingsAndReviews').find({"address.country": new RegExp(`^${uppercasedCountry}$`, 'i')}).toArray():
-            await db.collection<ListingAndReview>('listingsAndReviews').find().toArray();
+            await db.collection<ListingAndReview>(listingsAndReviewsCollection).find({"address.country": new RegExp(`^${uppercasedCountry}$`, 'i')}).toArray():
+            await db.collection<ListingAndReview>(listingsAndReviewsCollection).find().toArray();
   },
   
   getProperty: async (id: string) => {
     const db = getDBInstance();
     // Modo simple, nos traemos la propiedad con todas las reviews y después nos quedamos con las 5 últimas desde código
     // ToDo: Si no lo hacemos así, ya no haría falta el ordenar y recortar el array en los mappers, sólo para el mock
-    return await db.collection<ListingAndReview>('listingsAndReviews').findOne({_id: id});
+    return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: id});
 
     //Modo complicado, haciendo que desde Mongo se nos devuelvan directamente las 5 últimas reviews
     // return await getPropertyWithAggregation(db, id);
@@ -26,8 +27,8 @@ export const dbRepository: PropertyRepository = {
   saveReview: async (newReview: PropertyReview) => {
     const db = getDBInstance();
     const id = newReview.listing_id;
-    await db.collection<ListingAndReview>('listingsAndReviews').findOneAndUpdate({'_id': id}, {"$push": {reviews: newReview}});
-    return await db.collection<ListingAndReview>('listingsAndReviews').findOne({_id: id});
+    await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOneAndUpdate({'_id': id}, {"$push": {reviews: newReview}});
+    return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: id});
     // return await getPropertyWithAggregation(db, id);
   },
   
@@ -44,15 +45,16 @@ export const dbRepository: PropertyRepository = {
 const updateProperty = async (property: ListingAndReview): Promise<ListingAndReview> => {
   const db = getDBInstance();
   const id = property._id;
-  await db.collection<ListingAndReview>('listingsAndReviews').updateOne({_id: id}, {$set: property});
-  return await db.collection<ListingAndReview>('listingsAndReviews').findOne({_id: id});
+  await db.collection<ListingAndReview>(listingsAndReviewsCollection).updateOne({_id: id}, {$set: property});
+  return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: id});
 };
 
 const insertProperty = async (property: ListingAndReview): Promise<ListingAndReview> => {
   const db = getDBInstance();
-  const id = property._id;
-  await db.collection<ListingAndReview>('listingsAndReviews').insertOne(property);
-  return await db.collection<ListingAndReview>('listingsAndReviews').findOne({_id: id});
+  const newPropertyId = new ObjectId().toString();
+  property._id = newPropertyId;
+  const result = await db.collection<ListingAndReview>(listingsAndReviewsCollection).insertOne(property);
+  return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: newPropertyId});
 
 };
 
@@ -81,5 +83,5 @@ const getPropertyWithAggregation = async (db: Db, id: string): Promise<ListingAn
       }
     }
   ];
-  return await db.collection('listingsAndReviews').aggregate(agg)?.next() as ListingAndReview;
+  return await db.collection(listingsAndReviewsCollection).aggregate(agg)?.next() as ListingAndReview;
 }

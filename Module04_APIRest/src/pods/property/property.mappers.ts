@@ -37,8 +37,8 @@ export const mapPropertyDetailsFromModelToApi = (propertyDetails: model.ListingA
   address: propertyDetails.address.street,
   bedrooms: propertyDetails.bedrooms,
   beds: propertyDetails.beds,
-  bathrooms: parseFloat(propertyDetails.bathrooms.$numberDecimal),
-  reviews: mapPropertyReviewListFromModelToApi(propertyDetails.reviews)
+  bathrooms: parseFloat(propertyDetails.bathrooms?.$numberDecimal),
+  reviews: propertyDetails?.reviews ? mapPropertyReviewListFromModelToApi(propertyDetails.reviews) : []
 });
 
 const mapPropertyReviewListFromModelToApi = (propertyReviewList: model.PropertyReview[]): apiModel.PropertyReview[] => {
@@ -57,9 +57,9 @@ const mapPropertyReviewFromModelToApi = (propertyReview: model.PropertyReview): 
 });
 
 export const mapPropertyReviewFromApiToModel = (propertyId: string, propertyReview: apiModel.PropertyReview): model.PropertyReview => ({
-  _id: propertyReview.id ? propertyReview.id : (new ObjectId().toString()),
+  _id: propertyReview?.id ? propertyReview.id : (new ObjectId().toString()),
   listing_id: propertyId,
-  date: propertyReview.review_date || (new Date()).toISOString(),
+  date: (new Date()).toISOString(),
   reviewer_id: propertyReview.reviewer_id,
   reviewer_name: propertyReview.reviewer_name,
   comments: propertyReview.review_comment
