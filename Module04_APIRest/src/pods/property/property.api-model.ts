@@ -17,7 +17,7 @@ export interface PropertyReview {
   id?: string;
   property_id?: string;
   review_date?: string;
-  reviewer_id: string,
+  reviewer_id?: string,
   reviewer_name: string;
   review_comment: string;
 }

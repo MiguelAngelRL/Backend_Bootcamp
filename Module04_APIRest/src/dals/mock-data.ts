@@ -1,3 +1,4 @@
+import { Decimal128 } from 'mongodb';
 import { ListingAndReview } from './property';
 
 export interface DB {
@@ -33,9 +34,7 @@ export const db: DB = {
     "bedrooms": 3,
     "beds": 5,
     "number_of_reviews": 51,
-    "bathrooms": {
-      "$numberDecimal": "1.0"
-    },
+    "bathrooms": new Decimal128("1.0"),
     "amenities": [
       "TV",
       "Cable TV",
@@ -239,9 +238,7 @@ export const db: DB = {
     "bedrooms": 1,
     "beds": 2,
     "number_of_reviews": 0,
-    "bathrooms": {
-      "$numberDecimal": "1.0"
-    },
+    "bathrooms": new Decimal128("1.0"),
     "amenities": [
       "Wifi",
       "Wheelchair accessible",
@@ -355,9 +352,7 @@ export const db: DB = {
     "bedrooms": 1,
     "beds": 1,
     "number_of_reviews": 96,
-    "bathrooms": {
-      "$numberDecimal": "1.0"
-    },
+    "bathrooms": new Decimal128("1.0"),
     "amenities": [
       "TV",
       "Cable TV",
@@ -536,9 +531,7 @@ export const db: DB = {
     "bedrooms": 1,
     "beds": 1,
     "number_of_reviews": 1,
-    "bathrooms": {
-      "$numberDecimal": "1.5"
-    },
+    "bathrooms": new Decimal128("1.5"),
     "amenities": [
       "Internet",
       "Wifi",
@@ -654,9 +647,7 @@ export const db: DB = {
     "bedrooms": 1,
     "beds": 1,
     "number_of_reviews": 0,
-    "bathrooms": {
-      "$numberDecimal": "2.0"
-    },
+    "bathrooms": new Decimal128("2.0"),
     "amenities": [
       "TV",
       "Cable TV",
@@ -769,9 +760,7 @@ export const db: DB = {
     "bedrooms": 1,
     "beds": 1,
     "number_of_reviews": 70,
-    "bathrooms": {
-      "$numberDecimal": "1.0"
-    },
+    "bathrooms": new Decimal128("1.0"),
     "amenities": [
       "Internet",
       "Wifi",
@@ -980,9 +969,7 @@ export const db: DB = {
     "bedrooms": 1,
     "beds": 3,
     "number_of_reviews": 70,
-    "bathrooms": {
-      "$numberDecimal": "2.0"
-    },
+    "bathrooms": new Decimal128("2.0"),
     "amenities": [
       "TV",
       "Cable TV",

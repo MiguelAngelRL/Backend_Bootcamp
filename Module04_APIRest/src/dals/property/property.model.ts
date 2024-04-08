@@ -1,3 +1,5 @@
+import { Decimal128 } from "mongodb";
+
 export interface ListingAndReview {
   _id: string;
   listing_url?: string;
@@ -25,7 +27,7 @@ export interface ListingAndReview {
   bedrooms: number;
   beds: number;
   number_of_reviews?: number;
-  bathrooms: PropertyDecimalNumber;
+  bathrooms: Decimal128;
   amenities?: string[];
   price?: PropertyDecimalNumber;
   weekly_price?: PropertyDecimalNumber;
