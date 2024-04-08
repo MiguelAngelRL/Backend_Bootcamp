@@ -2,7 +2,6 @@ import { Router } from 'express';
 import { propertyRepository } from 'dals';
 import {
   mapPropertyListFromModelToApi,
-  mapPropertyDetailsFromApiToModel,
   mapPropertyDetailsFromModelToApi,
   mapPropertyReviewFromApiToModel
 } from './property.mappers';
@@ -30,14 +29,14 @@ propertyApi
   })
   .put('/', async (req, res, next) => { // Adding new property
     try {
-      const modelProperty = mapPropertyDetailsFromApiToModel(req.body);
-      const newProperty = await propertyRepository.saveProperty(modelProperty);
+      //TODO: In case we had a form to add new properties, create the corresponding mapper before saving
+      const newProperty = await propertyRepository.saveProperty(req.body);
       res.status(201).send(mapPropertyDetailsFromModelToApi(newProperty));
     } catch (error) {
       next(error);
     }
   })
-  .patch('/:id/addreview', async (req, res, next) => { // Adding new review to property
+  .patch('/:id/add-edit-review', async (req, res, next) => { // Adding new review to property
     try {
       const propertyId = req.params.id;
       const modelReview = mapPropertyReviewFromApiToModel(propertyId, req.body);

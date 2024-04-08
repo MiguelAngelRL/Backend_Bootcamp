@@ -1,7 +1,6 @@
 import * as model from 'dals';
 import * as apiModel from './property.api-model';
 import { sortReviewsByRecentDate } from '../../common-app/utils'
-import { ObjectId } from 'mongodb';
 
 export const mapPropertyFromModelToApi = (property: model.ListingAndReview): apiModel.PropertySummary => ({
   id: property._id,
@@ -57,7 +56,7 @@ const mapPropertyReviewFromModelToApi = (propertyReview: model.PropertyReview): 
 });
 
 export const mapPropertyReviewFromApiToModel = (propertyId: string, propertyReview: apiModel.PropertyReview): model.PropertyReview => ({
-  _id: propertyReview?.id ? propertyReview.id : (new ObjectId().toString()),
+  _id: propertyReview.id,
   listing_id: propertyId,
   date: (new Date()).toISOString(),
   reviewer_id: propertyReview.reviewer_id,

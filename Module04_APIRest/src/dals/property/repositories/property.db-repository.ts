@@ -24,14 +24,6 @@ export const dbRepository: PropertyRepository = {
     // return await getPropertyWithAggregation(db, id);
   },
   
-  saveReview: async (newReview: PropertyReview) => {
-    const db = getDBInstance();
-    const id = newReview.listing_id;
-    await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOneAndUpdate({'_id': id}, {"$push": {reviews: newReview}});
-    return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: id});
-    // return await getPropertyWithAggregation(db, id);
-  },
-  
   saveProperty: async (property: ListingAndReview) => {
     return Boolean(property._id) ? await updateProperty(property) : await insertProperty(property)
   },
@@ -40,22 +32,38 @@ export const dbRepository: PropertyRepository = {
     const db = getDBInstance();
     throw new Error('Not implemented');
   },
+
+  saveReview: async (review: PropertyReview) => {
+    return Boolean(review._id) ? await updateReview(review) : await insertReview(review);
+  }
 };
 
-const updateProperty = async (property: ListingAndReview): Promise<ListingAndReview> => {
+const insertProperty = async (newProperty: ListingAndReview): Promise<ListingAndReview> => {
   const db = getDBInstance();
-  const id = property._id;
-  await db.collection<ListingAndReview>(listingsAndReviewsCollection).updateOne({_id: id}, {$set: property});
-  return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: id});
+  newProperty._id = new ObjectId().toString();;
+  await db.collection<ListingAndReview>(listingsAndReviewsCollection).insertOne(newProperty);
+  return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: newProperty._id});
 };
 
-const insertProperty = async (property: ListingAndReview): Promise<ListingAndReview> => {
+const updateProperty = async (propertyModification: ListingAndReview): Promise<ListingAndReview> => {
   const db = getDBInstance();
-  const newPropertyId = new ObjectId().toString();
-  property._id = newPropertyId;
-  const result = await db.collection<ListingAndReview>(listingsAndReviewsCollection).insertOne(property);
-  return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: newPropertyId});
+  const currentProperty = await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: propertyModification._id});
+  await db.collection<ListingAndReview>(listingsAndReviewsCollection).updateOne({_id: propertyModification._id}, {$set: {...currentProperty, ...propertyModification}});
+  return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: propertyModification._id});
+};
 
+const insertReview = async (review: PropertyReview): Promise<ListingAndReview> => {
+  const db = getDBInstance();
+  review._id = new ObjectId().toString();
+  await db.collection<ListingAndReview>(listingsAndReviewsCollection).updateOne({'_id': review.listing_id}, {"$push": {reviews: review}});
+  return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: review.listing_id});
+};
+
+const updateReview = async (review: PropertyReview): Promise<ListingAndReview> => {
+  const db = getDBInstance();
+  await db.collection<ListingAndReview>(listingsAndReviewsCollection).
+    updateOne({_id: review.listing_id, 'reviews._id': review._id}, {$set: {"reviews.$.reviewer_name": review.reviewer_name, "reviews.$.comments": review.comments}});
+  return await db.collection<ListingAndReview>(listingsAndReviewsCollection).findOne({_id: review.listing_id});
 };
 
 //Modo complicado, haciendo que desde Mongo se nos devuelvan directamente las 5 últimas reviews
